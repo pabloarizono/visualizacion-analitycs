@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Render con Dash -->
+    <div id="graph1"></div>
+    <div id="graph2"></div>
+    <div id="graph3"></div>
+    <div id="graph4"></div>
+    <div id="graph5"></div>
+    <div id="graph6"></div>
+    <script>
+        var graph1Json = JSON.parse('{{ graph1_json|escapejs }}');
+        Plotly.newPlot('graph1', graph1Json.data, graph1Json.layout);
+
+        var graph2Json = JSON.parse('{{ graph2_json|escapejs }}');
+        Plotly.newPlot('graph2', graph2Json.data, graph2Json.layout);
+
+        var graph3Json = JSON.parse('{{ graph3_json|escapejs }}');
+        Plotly.newPlot('graph3', graph3Json.data, graph3Json.layout);
+
+        var graph4Json = JSON.parse('{{ graph4_json|escapejs }}');
+        Plotly.newPlot('graph4', graph4Json.data, graph4Json.layout);
+
+        var graph5Json = JSON.parse('{{ graph5_json|escapejs }}');
+        Plotly.newPlot('graph5', graph5Json.data, graph5Json.layout);
+
+        var graph6Json = JSON.parse('{{ graph6_json|escapejs }}');
+        Plotly.newPlot('graph6', graph6Json.data, graph6Json.layout);
+    </script>
+</body>
+</html>
+

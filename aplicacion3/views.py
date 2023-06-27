@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from plotly.io import to_json
 import plotly.graph_objs as go
+import json
+
 
 def dashboard_data_api(request):
     data1 = go.Scatter(x=[1, 2, 3], y=[4, 1, 2], mode='lines', name='Lineas')
@@ -16,9 +18,11 @@ def dashboard_data_api(request):
     layout = go.Layout(title='My Dashboard', xaxis={'title': 'X'}, yaxis={'title': 'Y'})
     figure = go.Figure(data=data, layout=layout)
 
-    #  a JSON
-    graph_json = to_json(figure)
+    #  a JSON (string)
+    graph_jsonstr = to_json(figure)
+    # Convertir JSON string a JSON object
+    graph_obj = json.loads(graph_jsonstr)
+
 
     # JSON a HTTP
-    return JsonResponse(graph_json, safe=False)
-
+    return JsonResponse(graph_obj, safe=False)
